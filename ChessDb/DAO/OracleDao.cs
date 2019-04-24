@@ -10,25 +10,40 @@ namespace ChessDb.DAO
 {
     class OracleDao
     {
-        public static void executePr()
+        private string oradb;// = "Data Source=ORCL;User Id=hr;Password=hr;";
+
+        private OracleConnection conn;// C#
+
+        OracleDao()
         {
-            string oradb = "Data Source=ORCL;User Id=hr;Password=hr;";
+            oradb = "Data Source=ORCL;User Id=hr;Password=hr;";
+            conn = new OracleConnection(oradb); // C#
+        }
 
-            OracleConnection conn = new OracleConnection(oradb); // C#
-
+        public void openConnetion() {
             conn.Open();
+        }
+
+        public void closeConnetion()
+        {
+            conn.Dispose();
+        }
+
+        public OracleDataReader executePr(string sentece)
+        {
 
             OracleCommand cmd = new OracleCommand();
 
             cmd.Connection = conn;
 
-            cmd.CommandText = "select department_name from departments where department_id = 10"; cmd.CommandType = CommandType.Text;
+            cmd.CommandText = sentece;//"select department_name from departments where department_id = 10"; 
+            cmd.CommandType = CommandType.Text;
 
             OracleDataReader dr = cmd.ExecuteReader();
 
             dr.Read();
 
-            conn.Dispose();
+            return dr;
         }    
     }
 }
