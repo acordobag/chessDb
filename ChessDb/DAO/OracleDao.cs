@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace ChessDb.DAO
 {
-    class OracleDao
+    public class OracleDao
     {
         private string oradb;// = "Data Source=ORCL;User Id=hr;Password=hr;";
 
         private OracleConnection conn;// C#
 
-        OracleDao()
+        public OracleDao()
         {
             oradb = "Data Source=ORCL;User Id=hr;Password=hr;";
             conn = new OracleConnection(oradb); // C#

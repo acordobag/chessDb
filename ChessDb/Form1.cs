@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChessDb.DAO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,9 +18,9 @@ namespace ChessDb
             InitializeComponent();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
-
+            OracleDao dao = new OracleDao();
         }
     }
 }
